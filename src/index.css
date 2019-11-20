@@ -1,0 +1,30 @@
+* {
+    font-size: 100%;
+}
+
+html {
+    background-color: lightgrey;
+}
+
+#root {
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+    border: 7px solid black;
+    box-shadow: 0 0 125px rgba(0, 0, 0, 0.5);
+}
+
+.square_light, .square_dark {
+    width: 100px;
+    height: 100px;
+    border-style: solid;
+    background-size: 100px;
+}
+
+.square_dark {
+    background-color: #d28b47;
+}
+
+.square_light {
+    background-color: #ffce9e;
+}
