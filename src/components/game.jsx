@@ -8,8 +8,7 @@ export default class Game extends React.Component {
         this.state = {
             squares: initChessBoard(),
             clickedPosition: -1,
-            desiredPosition: -1,
-            turn: 2,
+            turn: 1,
         }
     }
 
@@ -20,19 +19,23 @@ export default class Game extends React.Component {
     }
 
     isLegalMove(squares, i) {
+        let correctMove = squares[this.state.clickedPosition].canMove(squares, this.state.clickedPosition, i);
+
         if (squares[i] === null) {
-            return true;
+            return correctMove;
         }
-        if (squares[i].id !== this.state.squares[this.state.clickedPosition].id) {
-            return true;
+
+        let sameTeam = squares[i].id === this.state.squares[this.state.clickedPosition].id;
+        if (!sameTeam) {
+            return correctMove;
         }
+
         let copy = this.state.squares;
         copy[this.state.clickedPosition].highlight = null;
         this.setState({squares: copy});
         squares[i].highlight = "rgba(0, 0, 0, 0.7)";
         this.setState({
             clickedPosition: i,
-            desiredPosition: -1,
         });
         return false;
     }
@@ -46,7 +49,6 @@ export default class Game extends React.Component {
             copy[this.state.clickedPosition] = null;
             this.setState({
                 clickedPosition: -1,
-                desiredPosition: -1,
                 squares: copy,
             });
             if (this.state.turn === 1) {
@@ -63,7 +65,7 @@ export default class Game extends React.Component {
         return (
             <div>
                 <Board squares={this.state.squares} click={(i) => {
-                    if (this.state.clickedPosition === -1 && this.state.desiredPosition === -1 && this.state.squares[i] !== null) {
+                    if (this.state.clickedPosition === -1 && this.state.squares[i] !== null) {
                         if (this.state.squares[i].id === this.state.turn) {
                             this.handleFirstClick(i);
                         }

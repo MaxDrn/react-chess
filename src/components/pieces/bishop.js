@@ -13,4 +13,8 @@ export default class Bishop {
                 "https://upload.wikimedia.org/wikipedia/commons/1/1f/Chess_bdl45.svg" :
                 "https://upload.wikimedia.org/wikipedia/commons/9/9a/Chess_bdd45.svg";
     }
+
+    canMove() {
+        return true;
+    }
 }
