@@ -44,8 +44,4 @@ export default class Knight {
             y: y,
         }
     }
-
-    getIndexFromCoordinates(pos) {
-        return (pos.y * 8) + pos.x;
-    }
 }

@@ -1,15 +1,20 @@
 let stepper = {
-    getAllSteps: function(squares, current, desired) {
+    getAllSteps: function(squares, current, desired, ignore) {
         return {
-            leftSteps: stepper.checkLeftSteps(current, desired, squares, true),
-            rightSteps: stepper.checkRightSteps(current, desired, squares, true),
-            downSteps: stepper.checkDownSteps(current, desired, squares, true),
-            topSteps: stepper.checkTopSteps(current, desired, squares, true),
-            topLeftSteps: stepper.checkTopLeftSteps(current, desired, squares, true),
-            topRightSteps : stepper.checkTopRightSteps(current, desired, squares, true),
-            downLeftSteps : stepper.checkDownLeftSteps(current, desired, squares, true),
-            downRightSteps: stepper.checkDownRightSteps(current, desired, squares, true),
+            leftSteps: stepper.checkLeftSteps(current, desired, squares, ignore),
+            rightSteps: stepper.checkRightSteps(current, desired, squares, ignore),
+            downSteps: stepper.checkDownSteps(current, desired, squares, ignore),
+            topSteps: stepper.checkTopSteps(current, desired, squares, ignore),
+            topLeftSteps: stepper.checkTopLeftSteps(current, desired, squares, ignore),
+            topRightSteps : stepper.checkTopRightSteps(current, desired, squares, ignore),
+            downLeftSteps : stepper.checkDownLeftSteps(current, desired, squares, ignore),
+            downRightSteps: stepper.checkDownRightSteps(current, desired, squares, ignore),
         }
+    },
+    inCheck: function(squares, current, desired) {
+        let checkMatePositions = stepper.getAllSteps(squares, current, desired, false);
+        console.log(checkMatePositions);
+        return checkMatePositions === 0;
     },
     checkTopSteps: function(current, desired, squares, ignore) {
         let tempIndexUp = current;

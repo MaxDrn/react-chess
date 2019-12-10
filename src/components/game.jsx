@@ -20,7 +20,6 @@ export default class Game extends React.Component {
 
     isLegalMove(squares, i) {
         let correctMove = squares[this.state.clickedPosition].canMove(squares, this.state.clickedPosition, i);
-
         if (squares[i] === null) {
             return correctMove;
         }

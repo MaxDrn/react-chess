@@ -28,7 +28,7 @@ export default class Queen {
     }
 
     getPossiblePositions(squares, current, desired) {
-        let move = stepper.getAllSteps(squares, current, desired);
+        let move = stepper.getAllSteps(squares, current, desired, true);
         let possiblePositions = [];
         for (let i = 1; i <= move.leftSteps; i++) {
             possiblePositions.push(current - i);

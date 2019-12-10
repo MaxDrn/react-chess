@@ -18,7 +18,7 @@ export default class King {
 
     canMove(squares, current, desired) {
         let movePossible = false;
-        let possiblePositions = this.getPossiblePositions(squares, current, desired);
+        let possiblePositions = this.getPossiblePositions(squares, current, desired, true);
         possiblePositions.forEach((elem) => {
             if (elem === desired) {
                 movePossible = true;
@@ -27,8 +27,8 @@ export default class King {
         return movePossible;
     }
 
-    getPossiblePositions(squares, current, desired) {
-        let move = stepper.getAllSteps(squares, current, desired);
+    getPossiblePositions(squares, current, desired, ignore) {
+        let move = stepper.getAllSteps(squares, current, desired, ignore);
         let possiblePositions = [];
         for (let i = 1; i <= move.leftSteps; i++) {
             possiblePositions.push(current - 1);
@@ -56,5 +56,4 @@ export default class King {
         }
         return possiblePositions;
     }
-
 }

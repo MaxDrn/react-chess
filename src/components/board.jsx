@@ -28,7 +28,6 @@ export default class Board extends React.Component {
                 } else {
                     shade = (j % 2 !== 0) ? "dark" : "light";
                 }
-
                 if (this.state.squares[i * 8 + j] !== null) {
                     this.state.squares[i * 8 + j].setImage(this.state.squares[i * 8 + j].id, shade);
                     board.push(this.renderSquare(i * 8 + j, shade, this.state.squares[i * 8 + j].style, this.state.squares[i * 8 + j].highlight));
